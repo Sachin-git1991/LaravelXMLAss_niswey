@@ -88,8 +88,9 @@ class xmlAssController extends Controller
     public function xmlUpload(Request $req) {
         
         if ($req->isMethod("POST")) {
-           
-            if(!file_exists($req->file('user_file'))) {
+            $fileExtension =  pathinfo($_FILES['user_file']['name'], PATHINFO_EXTENSION);
+
+            if(!file_exists($fileExtension) && $fileExtension != "xml") {
                 return back()->with('message', 'XML File Not Found');
              } else {
                 if (!empty($req->file('user_file'))) {
