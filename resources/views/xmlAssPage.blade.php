@@ -28,7 +28,7 @@
                     <div class="row" >
                         <div class="form-group col-md-9">
                             <label for="user_file">Select XML File:</label>
-                            <input type="file" class="form-control" id="user_file" name="user_file">
+                            <input type="file" class="form-control" required id="user_file" name="user_file" accept="text/xml">
                         </div>
                         <div class="col-md-3" style="margin: 23px 0px 0px 0px !important;">
                             <button type="submit" class="btn btn-primary" id="submit-post">Submit</button>
