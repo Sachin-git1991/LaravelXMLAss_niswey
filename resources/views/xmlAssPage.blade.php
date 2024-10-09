@@ -83,15 +83,15 @@
                     <input type="hidden" name="id" id="ids">
                     <div class="form-group">
                         <label for="name" class="control-label sr-only">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                        <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="lastname" class="control-label sr-only">Enter Lastname</label>
-                        <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" name="lastname">
+                        <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" name="lastname" required>
                     </div>
                     <div class="form-group">
                         <label for="phone" class="control-label sr-only">Enter Phone</label>
-                        <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone">
+                        <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone" required>
                     </div>
                 </div>
                 <div class="modal-footer">

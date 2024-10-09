@@ -86,34 +86,42 @@ class xmlAssController extends Controller
     }
 
     public function xmlUpload(Request $req) {
+        
         if ($req->isMethod("POST")) {
+           
+            if(!file_exists($req->file('user_file'))) {
+                 // Error Handling 
+                die("XML File not found");
+             } else {
+                if (!empty($req->file('user_file'))) {
+                    $xmlDataString = file_get_contents($req->file('user_file'));
+                    $xmlObject = simplexml_load_string($xmlDataString);
 
-            if (!empty($req->file('user_file'))) {
-                $xmlDataString = file_get_contents($req->file('user_file'));
-                $xmlObject = simplexml_load_string($xmlDataString);
+                    $json = json_encode($xmlObject);
+                    $phpDataArray = json_decode($json, true);
 
-                $json = json_encode($xmlObject);
-                $phpDataArray = json_decode($json, true);
+                    if (count($phpDataArray['contact']) > 0) {
 
-                if (count($phpDataArray['contact']) > 0) {
+                        $dataArray = array();
 
-                    $dataArray = array();
-
-                    foreach ($phpDataArray['contact'] as $index => $data) {
-                        $userDetails = xmlAssModel::where(array('phone' => $data['phone']))->first();
-                        if (empty($userDetails)) {
-                            $dataArray[] = [
-                                "name" => $data['name'],
-                                "lastName" => $data['lastName'],
-                                "phone" => $data['phone']
-                            ];
+                        foreach ($phpDataArray['contact'] as $index => $data) {
+                            $userDetails = xmlAssModel::where(array('phone' => $data['phone']))->first();
+                            if (empty($userDetails)) {
+                                $dataArray[] = [
+                                    "name" => $data['name'],
+                                    "lastName" => $data['lastName'],
+                                    "phone" => $data['phone']
+                                ];
+                            }
                         }
+                        xmlAssModel::insert($dataArray);
+                        return back()->with('success_message', 'Data saved successfully and duplicate data has been ignored!');
                     }
-                    xmlAssModel::insert($dataArray);
-                    return back()->with('success_message', 'Data saved successfully and duplicate data has been ignored!');
-                }
-            }
+                }   
+             }
+             
         }
 
     }
+    
 }
