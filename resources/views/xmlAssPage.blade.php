@@ -36,7 +36,7 @@
                     </div>
                 </form>
             </form>
-
+            <p style="color:red"> <?php echo session()->get('message') ?> </p>
 
 
         <h2>XML Details Table</h2>

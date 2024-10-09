@@ -90,8 +90,7 @@ class xmlAssController extends Controller
         if ($req->isMethod("POST")) {
            
             if(!file_exists($req->file('user_file'))) {
-                 // Error Handling 
-                die("XML File not found");
+                return back()->with('message', 'XML File Not Found');
              } else {
                 if (!empty($req->file('user_file'))) {
                     $xmlDataString = file_get_contents($req->file('user_file'));
@@ -115,7 +114,7 @@ class xmlAssController extends Controller
                             }
                         }
                         xmlAssModel::insert($dataArray);
-                        return back()->with('success_message', 'Data saved successfully and duplicate data has been ignored!');
+                        return back()->with('message', 'Data saved successfully and duplicate data has been ignored!');
                     }
                 }   
              }
