@@ -28,7 +28,7 @@
                     <div class="row" >
                         <div class="form-group col-md-9">
                             <label for="user_file">Select XML File:</label>
-                            <input type="file" class="form-control" required id="user_file" name="user_file" accept="text/xml">
+                            <input type="file" class="form-control" required id="user_file" name="user_file">
                         </div>
                         <div class="col-md-3" style="margin: 23px 0px 0px 0px !important;">
                             <button type="submit" class="btn btn-primary" id="submit-post">Submit</button>
@@ -45,7 +45,6 @@
                     <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Lastname</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Action</th>
                     </tr>
@@ -54,8 +53,7 @@
                     @foreach ($xmlAssModel as $value)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $value->name }}</td>
-                            <td>{{ $value->lastname }}</td>
+                            <td>{{ $value->name }} {{ $value->lastname }}</td>
                             <td>{{ $value->phone }}</td>
                             <td><a href="javascript:void(0)" data-id="{{ $value->id }}" class="xml-edit">Edit</a> / <a href="javascript:void(0)" data-id="{{ $value->id }}" class="xml-delete">Delete</a></td>
                         </tr>
