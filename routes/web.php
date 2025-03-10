@@ -42,3 +42,6 @@ Route::get('/XmlAss/edit', [xmlAssController::class, 'edit'])->name('XmlAss.edit
 Route::post('/XmlAss/update', [xmlAssController::class, 'update'])->name('XmlAss.update');
 Route::get('/XmlAss/delete', [xmlAssController::class, 'destroy'])->name('XmlAss.delete');
 
+
+Route::get('/export', [xmlAssController::class, 'export'])->name('xml.export');
+

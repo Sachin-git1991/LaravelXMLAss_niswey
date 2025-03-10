@@ -40,6 +40,7 @@
 
 
         <h2>XML Details Table</h2>
+            <a class="btn btn-warning float-end" href="{{ route('xml.export') }}">Export User Data</a>
             <table class="table">
                 <thead class="thead-dark">
                     <tr>

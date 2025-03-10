@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\xmlAssModel;
+use App\Exports\ExcelExport;
+use Maatwebsite\Excel\Facades\Excel;
 use XMLReader;
 
 class xmlAssController extends Controller
@@ -121,6 +123,19 @@ class xmlAssController extends Controller
 
              
         }
+
+    }
+
+     /**
+
+    * @return \Illuminate\Support\Collection
+
+    */
+
+    public function export() 
+    {
+
+        return Excel::download(new ExcelExport, 'ExcelExport.xlsx');
 
     }
     
